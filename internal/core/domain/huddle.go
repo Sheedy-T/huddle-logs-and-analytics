@@ -1,6 +1,9 @@
 package domain
 
-import "time"
+import (
+	"encoding/json"
+	"time"
+)
 
 // Huddle represents a call session
 type Huddle struct {
@@ -13,16 +16,17 @@ type Huddle struct {
 
 // HuddleLog represents a specific event (Metadata)
 type HuddleLog struct {
-	ID        int64     `json:"id"`
-	HuddleID  string    `json:"huddle_id"`
-	UserID    string    `json:"user_id"`
-	EventType string    `json:"event_type"` // e.g., "JOINED", "MUTED"
-	Timestamp time.Time `json:"timestamp"`
-	MetaData  map[string]any `json:"meta_data,omitempty"` // Robust: flexible for extra info
+	ID        int64           `json:"id"`
+	HuddleID  string          `json:"huddle_id"`
+	UserID    string          `json:"user_id"`
+	EventType string          `json:"event_type"` // e.g., "JOINED", "MUTED"
+	Timestamp time.Time       `json:"timestamp"`
+	MetaData  json.RawMessage `json:"meta_data,omitempty"` // store JSON as-is
 }
 
+// HuddleSummary represents summary data for a session
 type HuddleSummary struct {
-    HuddleID          string  `json:"huddle_id"`
-    TotalParticipants int     `json:"total_participants"`
-    DurationSeconds   float64 `json:"duration_seconds"`
-}
+	HuddleID          string  `json:"huddle_id"`
+	TotalParticipants int     `json:"total_participants"`
+	DurationSeconds   float64 `json:"duration_seconds"`
+};
