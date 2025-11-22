@@ -1,0 +1,27 @@
+# Executables and build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+server             # The compiled binary (we named ours 'server')
+*server            # Wildcard for any compiled binary names
+
+# Dependency directories
+vendor/
+
+# Environment files and secrets
+.env               # CRITICAL: Contains your DATABASE_URL/secrets
+
+# IDE and Editor directories/files
+.idea/             # JetBrains IDEs (GoLand, IntelliJ)
+.vscode/           # Visual Studio Code settings
+*.sublime-workspace
+*.sublime-project
+
+# macOS files
+.DS_Store
+
+# Go Test outputs
+*.test
+*.out
+/testing           # Common directory for generated test assets
